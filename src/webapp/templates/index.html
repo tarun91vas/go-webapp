@@ -5,10 +5,13 @@
     <div>
             <h1>Task List</h1>
             <ul>
-                <li>Emails follow up</li>
-                <li>Book tickets</li>
-                <li>Office work</li>
-                <li>Meet Sam</li>
+                {{range .}}
+                    {{if .Done}}
+                        <li><s>{{.Name}}: {{.Description}}</s></li>
+                    {{else}}
+                    <li>{{.Name}}: {{.Description}}</li>
+                    {{end}}
+                {{end}}
             </ul>
     </div>
 </body>

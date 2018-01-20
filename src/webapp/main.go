@@ -8,6 +8,13 @@ import (
 	"strings"
 )
 
+//Task defines task components
+type Task struct {
+	Name        string
+	Description string
+	Done        bool
+}
+
 func main() {
 
 	// Handle view task
@@ -27,6 +34,29 @@ func main() {
 }
 
 func viewHandler(w http.ResponseWriter, r *http.Request) {
+	tasks := &[]Task{
+		{
+			Name:        "Communication",
+			Description: "Emails follow up",
+			Done:        false,
+		},
+		{
+			Name:        "Misc",
+			Description: "Book tickets",
+			Done:        false,
+		},
+		{
+			Name:        "Misc",
+			Description: "Bill Payments",
+			Done:        false,
+		},
+		{
+			Name:        "Meeting",
+			Description: "ES as a service",
+			Done:        true,
+		},
+	}
+
 	reqPath := r.URL.Path[len("/view/"):]
 	if strings.EqualFold(reqPath, "") {
 		reqPath = "index.html"
@@ -34,8 +64,13 @@ func viewHandler(w http.ResponseWriter, r *http.Request) {
 	templatePath := strings.Join([]string{"src", "webapp", "templates", reqPath}, string(os.PathSeparator))
 	t, err := template.ParseFiles(templatePath)
 	if err != nil {
+		fmt.Println(err)
 		http.NotFound(w, r)
 		return
 	}
-	t.Execute(w, nil)
+
+	err = t.Execute(w, tasks)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
