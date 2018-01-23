@@ -6,14 +6,8 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"webapp/model"
 )
-
-//Task defines task components
-type Task struct {
-	Name        string
-	Description string
-	Done        bool
-}
 
 func main() {
 
@@ -34,29 +28,7 @@ func main() {
 }
 
 func viewHandler(w http.ResponseWriter, r *http.Request) {
-	tasks := &[]Task{
-		{
-			Name:        "Communication",
-			Description: "Emails follow up",
-			Done:        false,
-		},
-		{
-			Name:        "Misc",
-			Description: "Book tickets",
-			Done:        false,
-		},
-		{
-			Name:        "Misc",
-			Description: "Bill Payments",
-			Done:        false,
-		},
-		{
-			Name:        "Meeting",
-			Description: "ES as a service",
-			Done:        true,
-		},
-	}
-
+	tasks := model.GetTasks()
 	reqPath := r.URL.Path[len("/view/"):]
 	if strings.EqualFold(reqPath, "") {
 		reqPath = "index.html"
