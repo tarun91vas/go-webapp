@@ -1,15 +1,16 @@
 package controller
 
 import (
+	"html/template"
 	"net/http"
 	"os"
 	"strings"
 )
 
 //Setup register all the routes of the app
-func Setup() {
+func Setup(templates *template.Template) {
 	// Register controllers
-	homeController := &home{}
+	homeController := &home{templates: templates}
 	homeController.registerRoutes()
 
 	//Serve static folder
