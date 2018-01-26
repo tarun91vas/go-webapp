@@ -1,5 +1,10 @@
 package model
 
+import (
+	"errors"
+	"strconv"
+)
+
 //Task defines task components
 type Task struct {
 	ID          int
@@ -47,4 +52,15 @@ func GetTasks() []Task {
 //AddTask will add a task
 func AddTask(t Task) {
 	tasks = append(tasks, t)
+}
+
+//GetTaskByID fetch task for a given ID
+func GetTaskByID(id string) (Task, error) {
+	for _, task := range GetTasks() {
+		val, _ := strconv.Atoi(id)
+		if task.ID == val {
+			return task, nil
+		}
+	}
+	return Task{}, errors.New("Invalid ID")
 }

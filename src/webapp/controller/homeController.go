@@ -15,6 +15,7 @@ type home struct {
 func (h *home) registerRoutes() {
 	// Handle home route
 	http.HandleFunc("/home/", h.homeHandler)
+
 }
 
 func (h *home) homeHandler(w http.ResponseWriter, r *http.Request) {

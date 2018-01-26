@@ -13,6 +13,9 @@ func Setup(templates *template.Template) {
 	homeController := &home{templates: templates}
 	homeController.registerRoutes()
 
+	taskController := &task{templates: templates}
+	taskController.registerRoutes()
+
 	//Serve static folder
 	staticDir := strings.Join([]string{"src", "webapp", "static"}, string(os.PathSeparator))
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir(staticDir))))

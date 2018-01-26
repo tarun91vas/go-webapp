@@ -1,0 +1,17 @@
+<!-- task page -->
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="http://example.com/favicon.ico" />
+</head>
+<body>
+    <div>
+            <h1>Task: </h1>
+            <p> ID: {{.ID}}</p>
+            <p>Name: {{.Name}}</p>
+            <p>Description: {{.Description}}</p>
+            {{if .Done}}
+            <p>Status: Done</p>
+            {{else}}
+            <p>Status: Pending</p>
+            {{end}}
+    </div>
+</body>
