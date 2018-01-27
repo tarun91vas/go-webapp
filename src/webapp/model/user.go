@@ -28,7 +28,8 @@ func (u *User) NewUser() []User {
 }
 
 //IsValidUser validates the user
-func (u *User) IsValidUser(email string, pass string) bool {
+func IsValidUser(email string, pass string) bool {
+	u := &User{}
 	for _, u := range u.NewUser() {
 		if u.Email == email && u.Password == pass {
 			return true
