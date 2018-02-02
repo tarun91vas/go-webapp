@@ -7,6 +7,7 @@ import (
 	"strings"
 	"webapp/controller"
 	"webapp/lib"
+	"webapp/middleware"
 )
 
 func main() {
@@ -18,5 +19,5 @@ func main() {
 	controller.Setup(templates)
 
 	fmt.Println("Server listening on 8080...")
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8080", new(middleware.GzipMiddleware))
 }
