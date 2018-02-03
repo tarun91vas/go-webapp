@@ -19,5 +19,5 @@ func main() {
 	controller.Setup(templates)
 
 	fmt.Println("Server listening on 8080...")
-	http.ListenAndServe(":8080", new(middleware.GzipMiddleware))
+	http.ListenAndServe(":8080", &middleware.TimeoutMiddleware{Next: new(middleware.GzipMiddleware)})
 }
