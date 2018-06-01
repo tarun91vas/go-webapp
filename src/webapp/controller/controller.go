@@ -25,6 +25,11 @@ func Setup(templates *template.Template) {
 
 	//Root handler
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		urlSuffix := r.URL.Path[len("/"):]
+		if len(urlSuffix) > 0 {
+			http.NotFound(w, r)
+			return
+		}
 		w.Write([]byte("The server is up and running!!"))
 	})
 

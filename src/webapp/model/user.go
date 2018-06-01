@@ -8,7 +8,7 @@ type User struct {
 	Age      int
 }
 
-//NewUser return list of User
+//NewUser returns list of User
 func (u *User) NewUser() []User {
 	users := []User{
 		{
