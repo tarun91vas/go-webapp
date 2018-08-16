@@ -1,9 +1,13 @@
-## Go web application template
-Demostrates how to create web applications in go by creating a task managment application.
+## Go web application template (WIP)
+A web MVC application in go. Design of a task managment application. [gb tool](https://getgb.io/) is used to structure the project.
 
-####todo
-- Integrate third party router: httprouter
-- Populate templates as map of string and template
-- Add view model layer, if required
+## Run
+
+- Compile: `gb build webapp`
+- Run: `./bin/webapp`
+
+
+
+
 
 
